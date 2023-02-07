@@ -8,15 +8,17 @@ Let's add basic crud operations to our first Django application.
 
 2) Update django version to 4.1 -  `pipenv install django==4.1` 
 
-3) Windows users go to settings.py and add 'USER' and 'PASSWORD' to DATABASES config 
+3) Cd into this repo `cd django_campus_crud`
 
-4) Start Server `python3 manage.py runserver`
+4) Windows users go to **settings.py** and add **'USER'** and **'PASSWORD'** to **DATABASES** config 
 
-4) Go to localhost:8000 to see index route "Welcome to our campus!"
+5) Start Server `python3 manage.py runserver`
+
+6) Go to **localhost:8000** to see index route "Welcome to our campus!"
 
 **If you already have a 'campus' db with books:**
 
-5) Go to localhost:8000/books/ to see all books in the DB
+7) Go to **localhost:8000/books/** to see all books in the DB
 
 <br><br>
 
@@ -53,7 +55,7 @@ Exit shell:
 
 ### Create Seed Data
 
-Open Django ORM shell to easily add books to campus using book model:
+Open **Django ORM shell** to easily add books to campus using book model:
 
 Run : `python3 manage.py shell`
 
