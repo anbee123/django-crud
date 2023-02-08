@@ -3,7 +3,7 @@ from rest_framework.response import Response
 from rest_framework import status
 from .serializers import BookSerializer
 from .models import Book
-from django.shortcuts import get_objetc_or_404
+from django.shortcuts import get_object_or_404
 
 # Create your views here.
 
@@ -59,7 +59,17 @@ class BookDetail(APIView):
     def put(self, request, pk):
         #update request
         print(request)
+        book = get_object_or_404(Book, pk=pk)
+        updated = BookSerializer(book, data=request.data, partial=True)
+        if updated.is_valid():
+            updated.save()
+            return Response(update.data)
+        else: 
+            return Response(updated.errors, status=status.HTTP_404_BAD_REQUEST)
 
     def delete(self,request, pk):
         #delete request
         print(request)
+        book = get_object_or_404(Book, pk=pk)
+        book.delete()
+        return Response(status=status.HTTP_204_NO_CONTENT)
