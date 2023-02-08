@@ -25,6 +25,13 @@ class Books(APIView):
     def get(self, request):
         #index request
         print(request)
+        #get all books from the book table
+        books = Book.objects.all()
+        #use serializer to format table data to JSON
+        data = BookSerializer(book, many=True).data
+        return Response(data)
+        
+
 
     def post(self, request):
         # Post request
