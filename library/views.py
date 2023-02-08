@@ -19,3 +19,27 @@ from .models import Book
 # GET /books/:id - show
 # PUT /books/:id - update
 # DELETE /books/:id - delete
+
+class Books(APIView):
+
+    def get(self, request):
+        #index request
+        print(request)
+
+    def post(self, request):
+        # Post request
+        print(request.data)
+
+
+class BookDetail(APIView):
+    def get(self, request):
+        #show request
+        print(request)
+    
+    def put(self, request):
+        #update request
+        print(request)
+
+    def delete(self,request):
+        #delete request
+        print(request)
