@@ -1,7 +1,7 @@
-from rest_framework.views imort APIView
-from rest_framework import Response
+from rest_framework.views import APIView
+from rest_framework.response import Response
 from rest_framework import status
-from .serializers import Bookserializer
+from .serializers import BookSerializer
 from .models import Book
 
 # Create your views here.
@@ -28,14 +28,19 @@ class Books(APIView):
         #get all books from the book table
         books = Book.objects.all()
         #use serializer to format table data to JSON
-        data = BookSerializer(book, many=True).data
+        data = BookSerializer(books, many=True).data
         return Response(data)
-        
+
 
 
     def post(self, request):
         # Post request
         print(request.data)
+        #format data for postgres
+        book = BookSerializer(data=request.data)
+        if book.is_valid():
+            book.save()
+            return Response(book.data, status=status.HTTP_201_CREATED)
 
 
 class BookDetail(APIView):

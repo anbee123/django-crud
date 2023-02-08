@@ -1,8 +1,8 @@
 #think of serializers as middleware that formats your DB data into something the browser can read
 from rest_framework import serializers
-from .models.book import book 
+from .models import Book 
 
-class Bookserializer(serializers.ModelSerializer):
+class BookSerializer(serializers.ModelSerializer):
     class Meta:
-        model = Bookserializer
+        model = Book
         fields = '__all__'
